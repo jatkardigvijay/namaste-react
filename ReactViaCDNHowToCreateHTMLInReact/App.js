@@ -36,8 +36,6 @@ const parent = React.createElement(
 // if we had a large application then it would become difficult
 // Hence, we use JSX
 
-console.log(parent);
-
 // render the heading h1 in the div id="root"
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
