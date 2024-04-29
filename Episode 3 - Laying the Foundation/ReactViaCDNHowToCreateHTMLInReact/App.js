@@ -1,10 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
+const elem = <span>React Element</span>
+
 const Title = () => {
     return (
         <h1>
-            Namaste React !
+            {elem} 
+            Namaste React !!!
         </h1>
 )};
 
@@ -14,9 +17,8 @@ const number = 10000;
 const HeadingCompoment = () => {
     return (
         <div id="container">
-            <Title/>
-            {number}
-            <h1>Namaste dj !</h1>
+            {Title()}
+            <h1>Namaste dj funcational component !</h1>
         </div>
 )};
 
