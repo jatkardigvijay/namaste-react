@@ -1,0 +1,5 @@
+// Css using JavaScript Object
+// write here code and then call in {} as below
+const styleCard = {
+    backgroundColor : "#f0f0f0"
+};
