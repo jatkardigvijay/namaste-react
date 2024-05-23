@@ -1,11 +1,15 @@
 import RestaurantCard from "./RestaurantCard";
 import restaurantList from "../utils/mockdata";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Body = () => {
 
     // super powerful react variables
     const [listOfRestaurants, setListOfRestaurant] = useState(restaurantList);
+
+    useEffect(()=>{
+        console.log('useEffect Called');
+    }, []);
 
     //normal js variables
     let listOfRestaurantsJS = [
