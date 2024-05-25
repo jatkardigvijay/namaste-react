@@ -8,8 +8,19 @@ const Body = () => {
     const [listOfRestaurants, setListOfRestaurant] = useState(restaurantList);
 
     useEffect(()=>{
-        console.log('useEffect Called');
+        //api call can write here or write a method outside and call it here.
+        fetchData();
     }, []);
+
+    const fetchData = async () => {
+        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=53.34020&lng=-6.27120&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+    
+    //convert data to json
+    const json = await data.json(data);
+
+    console.log(json);
+
+    }
 
     //normal js variables
     let listOfRestaurantsJS = [
