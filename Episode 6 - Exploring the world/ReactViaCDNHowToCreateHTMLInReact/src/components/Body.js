@@ -1,6 +1,45 @@
 import RestaurantCard from "./RestaurantCard";
 import restaurantList from "../utils/mockdata";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+
+//normal js variables
+let listOfRestaurantsJS = [
+    {
+        data: {
+            id: "74453",
+            name: "Domino's Pizza",
+            cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+            cuisines: ["Pizzas"],
+            costForTwo: 40000,
+            deliveryTime: 45,
+            avgRating: "4.0"
+        }
+        
+    },
+    {
+        data: {
+            id: "74454",
+            name: "KFC",
+            cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+            cuisines: ["Pizzas"],
+            costForTwo: 40000,
+            deliveryTime: 45,
+            avgRating: "4.4"
+        }
+    },
+    {
+        data: {
+            id: "74456",
+            name: "Mc'Donalds",
+            cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+            cuisines: ["Burgers"],
+            costForTwo: 30000,
+            deliveryTime: 15,
+            avgRating: "4.3"
+        }
+    }
+];
 
 const Body = () => {
 
@@ -19,46 +58,13 @@ const Body = () => {
     const json = await data.json(data);
 
     console.log(json);
+    //optional chaining means we add question marks ? as below
+    // setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+    };
 
+    if(listOfRestaurantsJS.length === 0){
+        return <Shimmer/>;
     }
-
-    //normal js variables
-    let listOfRestaurantsJS = [
-        {
-            data: {
-                id: "74453",
-                name: "Domino's Pizza",
-                cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-                cuisines: ["Pizzas"],
-                costForTwo: 40000,
-                deliveryTime: 45,
-                avgRating: "4.0"
-            }
-            
-        },
-        {
-            data: {
-                id: "74454",
-                name: "KFC",
-                cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-                cuisines: ["Pizzas"],
-                costForTwo: 40000,
-                deliveryTime: 45,
-                avgRating: "4.4"
-            }
-        },
-        {
-            data: {
-                id: "74456",
-                name: "Mc'Donalds",
-                cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-                cuisines: ["Burgers"],
-                costForTwo: 30000,
-                deliveryTime: 15,
-                avgRating: "4.3"
-            }
-        }
-    ];
 
     return (
         <div className="body">
