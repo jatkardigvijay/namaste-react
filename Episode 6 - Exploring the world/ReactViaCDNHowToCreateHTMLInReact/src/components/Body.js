@@ -62,11 +62,8 @@ const Body = () => {
     // setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
     };
 
-    if(listOfRestaurantsJS.length === 0){
-        return <Shimmer/>;
-    }
-
-    return (
+    // code optimized to conditional rendering
+    return listOfRestaurantsJS.length === 0 ? <Shimmer/> : (
         <div className="body">
             <div className="filter">
                 <button className="filter-btn" onClick={() => {
