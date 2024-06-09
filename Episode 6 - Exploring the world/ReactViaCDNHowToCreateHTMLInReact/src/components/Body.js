@@ -46,6 +46,10 @@ const Body = () => {
     // super powerful react variables
     const [listOfRestaurants, setListOfRestaurant] = useState(restaurantList);
 
+    const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+
+    const[searchText, setSearchText] = useState("");
+
     useEffect(()=>{
         //api call can write here or write a method outside and call it here.
         fetchData();
@@ -60,12 +64,27 @@ const Body = () => {
     console.log(json);
     //optional chaining means we add question marks ? as below
     // setListOfRestaurant(json?.data?.cards[2]?.data?.data?.cards);
+    setFilteredRestaurant(restaurantList);
     };
 
     // code optimized to conditional rendering
     return listOfRestaurantsJS.length === 0 ? <Shimmer/> : (
         <div className="body">
             <div className="filter">
+                <div className="search">
+                    <input type="text" className="search-box" value={searchText} onChange={(e)=>{
+                        setSearchText(e.target.value);
+                    }}></input>
+                    <button onClick={()=>{
+
+                    const filteredRestaurant = restaurantList.filter(
+                        (res)=> res.data.name.toLowerCase().includes(searchText.toLowerCase())
+                        );
+
+                        setFilteredRestaurant(filteredRestaurant);
+
+                    }}>Search</button>
+                </div>
                 <button className="filter-btn" onClick={() => {
                     const filteredList = listOfRestaurants.filter(
                         (res) => res.data.avgRating > 4
@@ -78,7 +97,7 @@ const Body = () => {
                     // for loop/ map operation applied in react to get the restaurants dynamically
                 }
                 {
-                    listOfRestaurants.map(
+                    filteredRestaurant.map(
                         restaurant => <RestaurantCard key={restaurant.data.id} resData={restaurant}/>
                     )
                 }
